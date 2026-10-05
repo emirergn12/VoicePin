@@ -1,0 +1,1 @@
+// VoiceNote model - will be implemented later
