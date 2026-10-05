@@ -131,7 +131,3 @@ Uygulama **Privacy-First (Gizlilik Odaklı)** prensiplerle geliştirilmiştir:
 * Mikrofon ve Konum izinleri kullanıcı onayına tabidir.
 
 ---
-
-## 📄 Lisans
-
-Bu proje eğitim ve portfolyo amacıyla geliştirilmiştir. Tüm hakları saklıdır.
