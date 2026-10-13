@@ -4,7 +4,7 @@ class PermissionService {
   // Konum izni iste
   static Future<bool> requestLocationPermission() async {
     PermissionStatus status = await Permission.location.request();
-    
+
     if (status.isGranted) {
       return true;
     } else if (status.isDenied) {
@@ -30,7 +30,7 @@ class PermissionService {
   // Mikrofon izni iste
   static Future<bool> requestMicrophonePermission() async {
     PermissionStatus status = await Permission.microphone.request();
-    
+
     if (status.isGranted) {
       return true;
     } else if (status.isPermanentlyDenied) {
@@ -61,7 +61,7 @@ class PermissionService {
     bool location = await requestLocationPermission();
     bool microphone = await requestMicrophonePermission();
     bool notification = await requestNotificationPermission();
-    
+
     return location && microphone && notification;
   }
 }

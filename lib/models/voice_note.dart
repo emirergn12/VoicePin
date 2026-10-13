@@ -55,7 +55,8 @@ class VoiceNote {
   Map<String, dynamic> toJson() => toMap();
 
   // JSON deserialize
-  factory VoiceNote.fromJson(Map<String, dynamic> json) => VoiceNote.fromMap(json);
+  factory VoiceNote.fromJson(Map<String, dynamic> json) =>
+      VoiceNote.fromMap(json);
 
   // Copy with (güncelleme için)
   VoiceNote copyWith({

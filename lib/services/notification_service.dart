@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class NotificationService {
   static final NotificationService instance = NotificationService._init();
-  final FlutterLocalNotificationsPlugin  _notifications = 
+  final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
   NotificationService._init();
@@ -23,42 +23,43 @@ class NotificationService {
       onDidReceiveNotificationResponse: _onNotificationTapped,
     );
   }
-        //Bildirime tıkladığında
+
+  //Bildirime tıkladığında
   void _onNotificationTapped(NotificationResponse response) {
-      //Ses notunu oynat veya detay göster
-      debugPrint('Bildirime tıklandı: ${response.payload}');
+    //Ses notunu oynat veya detay göster
+    debugPrint('Bildirime tıklandı: ${response.payload}');
   }
 
-   //Basit bildirim gönder
-   Future<void> showNotification({
+  //Basit bildirim gönder
+  Future<void> showNotification({
     required int id,
     required String title,
     required String body,
     String? payload,
-   }) async {
-    const AndroidNotificationDetails androidDetails = 
+  }) async {
+    const AndroidNotificationDetails androidDetails =
         AndroidNotificationDetails(
-          'voicepin_channel',
-          'VoicePin Notifications',
-          channelDescription: 'Konum bazlı ses notu bildirimleri',
-          importance: Importance.max,
-          priority: Priority.high,
-          playSound: true,
-        );
-        const NotificationDetails details = NotificationDetails(
-          android: androidDetails,
-        );
-        await _notifications.show(
-          id,
-          title,
-          body,
-          details,
-          payload: payload,
-        );
-   }
+      'voicepin_channel',
+      'VoicePin Notifications',
+      channelDescription: 'Konum bazlı ses notu bildirimleri',
+      importance: Importance.max,
+      priority: Priority.high,
+      playSound: true,
+    );
+    const NotificationDetails details = NotificationDetails(
+      android: androidDetails,
+    );
+    await _notifications.show(
+      id,
+      title,
+      body,
+      details,
+      payload: payload,
+    );
+  }
 
-   //Ses notu için bildirim
-   Future<void> showVoiceNoteNotification(VoiceNote note) async {
+  //Ses notu için bildirim
+  Future<void> showVoiceNoteNotification(VoiceNote note) async {
     await showNotification(
       id: note.id ?? 0,
       title: '🎤 Ses Notunuz Yakınlarda!',

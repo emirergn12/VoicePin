@@ -1,4 +1,4 @@
-class AppConstans  {
+class AppConstans {
   //App Info
   static const String appName = 'VoicePin';
   static const String appVersion = '1.0.0';
@@ -14,10 +14,10 @@ class AppConstans  {
   static const double maxRadius = 500.0;
 
   //Categories
-  static const String categoryShopping ='Shopping';
-  static const String categoryWork ='Work';
-  static const String categoryPersonal ='Personal';
-  static const String categoryOther ='Other';
+  static const String categoryShopping = 'Shopping';
+  static const String categoryWork = 'Work';
+  static const String categoryPersonal = 'Personal';
+  static const String categoryOther = 'Other';
 
   static const List<String> categories = [
     'categoryShopping',

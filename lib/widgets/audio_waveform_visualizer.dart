@@ -100,57 +100,58 @@ class _AudioWaveformVisualizerState extends State<AudioWaveformVisualizer>
       child: SizedBox(
         height: widget.height,
         child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: List.generate(widget.barCount, (index) {
-              final int barRatioIndex = index % _baseRatios.length;
-              final double baseRatio = _baseRatios[barRatioIndex];
+          animation: _controller,
+          builder: (context, child) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: List.generate(widget.barCount, (index) {
+                final int barRatioIndex = index % _baseRatios.length;
+                final double baseRatio = _baseRatios[barRatioIndex];
 
-              double animatedRatio = baseRatio;
-              if (widget.isAnimating) {
-                // Sine wave harmonic animation multiplier per bar
-                final double phase =
-                    (index * 0.45) + (_controller.value * 2 * math.pi);
-                final double wave = (math.sin(phase) + 1.0) / 2.0; // 0.0 - 1.0
-                animatedRatio = baseRatio * (0.3 + 0.7 * wave);
-              }
+                double animatedRatio = baseRatio;
+                if (widget.isAnimating) {
+                  // Sine wave harmonic animation multiplier per bar
+                  final double phase =
+                      (index * 0.45) + (_controller.value * 2 * math.pi);
+                  final double wave =
+                      (math.sin(phase) + 1.0) / 2.0; // 0.0 - 1.0
+                  animatedRatio = baseRatio * (0.3 + 0.7 * wave);
+                }
 
-              // Calculate active progress color for playback
-              final double barProgressPosition = index / widget.barCount;
-              final bool isActiveBar = widget.isRecordingStyle
-                  ? widget.isAnimating
-                  : barProgressPosition <= widget.progress;
+                // Calculate active progress color for playback
+                final double barProgressPosition = index / widget.barCount;
+                final bool isActiveBar = widget.isRecordingStyle
+                    ? widget.isAnimating
+                    : barProgressPosition <= widget.progress;
 
-              final Color currentBarColor = isActiveBar
-                  ? widget.activeColor
-                  : widget.inactiveColor.withValues(alpha: 0.35);
+                final Color currentBarColor = isActiveBar
+                    ? widget.activeColor
+                    : widget.inactiveColor.withValues(alpha: 0.35);
 
-              return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 2.0),
-                width: 3.5,
-                height: math.max(6.0, widget.height * animatedRatio),
-                decoration: BoxDecoration(
-                  color: currentBarColor,
-                  borderRadius: BorderRadius.circular(4.0),
-                  boxShadow: isActiveBar && widget.isAnimating
-                      ? [
-                          BoxShadow(
-                            color: widget.activeColor.withValues(alpha: 0.3),
-                            blurRadius: 4,
-                            spreadRadius: 0.5,
-                          )
-                        ]
-                      : null,
-                ),
-              );
-            }),
-          );
-        },
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 2.0),
+                  width: 3.5,
+                  height: math.max(6.0, widget.height * animatedRatio),
+                  decoration: BoxDecoration(
+                    color: currentBarColor,
+                    borderRadius: BorderRadius.circular(4.0),
+                    boxShadow: isActiveBar && widget.isAnimating
+                        ? [
+                            BoxShadow(
+                              color: widget.activeColor.withValues(alpha: 0.3),
+                              blurRadius: 4,
+                              spreadRadius: 0.5,
+                            )
+                          ]
+                        : null,
+                  ),
+                );
+              }),
+            );
+          },
+        ),
       ),
-    ),
     );
   }
 }

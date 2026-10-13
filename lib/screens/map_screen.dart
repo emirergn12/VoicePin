@@ -291,12 +291,15 @@ class _MapScreenState extends State<MapScreen> {
           // Ses Waveform Görselleştirici
           StatefulBuilder(
             builder: (context, setSheetState) {
-              final bool isPlayingThis = AudioPlayerService.instance.isPlaying &&
-                  AudioPlayerService.instance.currentlyPlayingPath == note.audioPath;
+              final bool isPlayingThis =
+                  AudioPlayerService.instance.isPlaying &&
+                      AudioPlayerService.instance.currentlyPlayingPath ==
+                          note.audioPath;
 
               return Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
                 decoration: BoxDecoration(
                   color: surfaceSubtle,
                   borderRadius: BorderRadius.circular(20),
@@ -447,14 +450,14 @@ class _MapScreenState extends State<MapScreen> {
             const SizedBox(height: 16),
 
             // Seçenekler
-            _buildCategoryFilterOption(
-                'All', 'Tüm İğneler', Icons.space_dashboard_rounded, primaryAccent),
-            _buildCategoryFilterOption(
-                'Shopping', 'Alışveriş', Icons.shopping_bag_rounded, AppColors.shopping),
+            _buildCategoryFilterOption('All', 'Tüm İğneler',
+                Icons.space_dashboard_rounded, primaryAccent),
+            _buildCategoryFilterOption('Shopping', 'Alışveriş',
+                Icons.shopping_bag_rounded, AppColors.shopping),
             _buildCategoryFilterOption(
                 'Work', 'İş', Icons.work_rounded, AppColors.work),
-            _buildCategoryFilterOption(
-                'Personal', 'Kişisel', Icons.person_rounded, AppColors.personal),
+            _buildCategoryFilterOption('Personal', 'Kişisel',
+                Icons.person_rounded, AppColors.personal),
             _buildCategoryFilterOption(
                 'Other', 'Diğer', Icons.push_pin_rounded, AppColors.others),
           ],
@@ -1078,7 +1081,8 @@ class _MapScreenState extends State<MapScreen> {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: primaryAccent.withValues(alpha: isDark ? 0.25 : 0.15),
+                    color:
+                        primaryAccent.withValues(alpha: isDark ? 0.25 : 0.15),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   )
